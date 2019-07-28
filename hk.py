@@ -1,18 +1,29 @@
-import sys, string, math, itertools
+import sys, string, math
+# program for dividing array to make average equal
 
-s = input()
-s = int(s)
-L = []
+def findSubarrays(arr, n):
+    # Find array sum
+    sum = 0;
+    for i in range(0, n):
+        sum += arr[i];
 
-for i in range(0,s) :
-    r = input()
-    L.append(r)
+    found = False
+    lsum = 0
+    for i in range(0, n - 1):
+        lsum += arr[i]
+        rsum = sum - lsum
 
-common_prefix = []
-for i in zip(*L):
-    if i.count(i[0]) == len(i):
-        common_prefix.append(i[0])
-    else:
-        break
-ans = ''.join(common_prefix)
-print(ans)
+        if lsum * (n - i - 1) == rsum * (i + 1):
+            #print("From (%d %d) to (%d %d)" % (0, i, i + 1, n - 1))
+            #print(arr[:i+1],arr[i+1:])
+            return True
+
+    # If no subarrays found
+    if found == False:
+        return False
+
+# Driver code
+n = int(input())
+L = [ int(x) for x in input().split()]
+if findSubarrays(L, n) : print('yes')
+else :                   print('no')
