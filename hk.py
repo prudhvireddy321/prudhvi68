@@ -1,12 +1,12 @@
 import sys, string, math, itertools
 
-n = input()
-n = int(n)
+s = input()
+s = int(s)
 L = []
 
-for i in range(0,n) :
-    s = input()
-    L.append(s)
+for i in range(0,s) :
+    r = input()
+    L.append(r)
 
 common_prefix = []
 for i in zip(*L):
